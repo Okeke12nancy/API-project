@@ -1,0 +1,31 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <script>
+       const phoneInfo = async () => {
+            let info;
+            await fetch("http://localhost:9000/phones")
+                .then((res) => res.json())
+                .then((data) => {
+                    info = data;
+                })
+            document.getElementById("name").innerHTML = info.name;
+            document.getElementById("brand").innerHTML = info.brand;
+            document.getElementById("screenSize").innerHTML = info.screenSize; 
+       }
+    </script>
+</head>
+<body>
+        <div>
+            <p>Name: <b id="name"></b></p>
+            <p>Brand: <b id="brand"></b></p>
+            <p>Screen-Size: <b id="screenSize"></b></p>
+            <button onclick="phoneInfo();">Click Here!</button>
+        </div>
+</body>
+
+</html>

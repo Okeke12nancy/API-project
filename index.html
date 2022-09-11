@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    
+    <script>
+        const showInfo = async ()  =>{
+            let userInfo;
+            await fetch("http://localhost:8000/user")
+            .then((res) => res.json())
+            .then((data) =>{
+                //console.log(data)
+                userInfo = data;
+            })
+            document.getElementById("userName").innerHTML = userInfo.username;
+            document.getElementById("userAge").innerHTML = userInfo.age;
+            document.getElementById("userSex").innerHTML = userInfo.sex;
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <p>Name: <b id="userName"></b></p>
+        <p>Age: <b id="userAge"></b></p>
+        <p>Sex: <b id="userSex"></b></p>
+        <button onclick="showInfo();">Show Name</button>
+    </div>
+</body>
+</html>
